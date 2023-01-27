@@ -26,7 +26,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func createDismissKeyboardTapGesture(){
@@ -40,7 +40,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
             presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😃.", buttonTitle: "Ok")
             return }
         
-        let followerListVC = FollowersVC()
+        let followerListVC = FollowersListVC()
         followerListVC.username = usernameTextField.text
         followerListVC.title =  usernameTextField.text
         navigationController?.pushViewController(followerListVC, animated: true)
