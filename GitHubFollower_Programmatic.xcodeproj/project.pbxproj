@@ -26,6 +26,7 @@
 		74FA15E92984196F00E17E17 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA15E82984196F00E17E17 /* ErrorMessage.swift */; };
 		74FA15EC2984420400E17E17 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA15EB2984420400E17E17 /* FollowerCell.swift */; };
 		74FA15EE2984429A00E17E17 /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA15ED2984429A00E17E17 /* GFAvatarImageView.swift */; };
+		74FA15F02985498100E17E17 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA15EF2985498100E17E17 /* UIHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		74FA15E82984196F00E17E17 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		74FA15EB2984420400E17E17 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		74FA15ED2984429A00E17E17 /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
+		74FA15EF2985498100E17E17 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				74FA15E82984196F00E17E17 /* ErrorMessage.swift */,
+				74FA15EF2985498100E17E17 /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				74FA15CB2982C03600E17E17 /* FavoriteListVC.swift in Sources */,
 				74FA15D22983D1C600E17E17 /* FollowersListVC.swift in Sources */,
 				74FA15DA2983E97D00E17E17 /* UIVİewController+Ext.swift in Sources */,
+				74FA15F02985498100E17E17 /* UIHelper.swift in Sources */,
 				74FA15EE2984429A00E17E17 /* GFAvatarImageView.swift in Sources */,
 				74FA15CD2982CA7C00E17E17 /* GFButton.swift in Sources */,
 				74FA15D82983E37A00E17E17 /* GFAlertVC.swift in Sources */,
