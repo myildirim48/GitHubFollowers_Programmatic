@@ -29,10 +29,10 @@ class UserInfoVC: UIViewController {
     }
     
     private func getUserInfo(){
-        //        add(childVC: GFUserInfoHeaderVC, to: headerView)
 #warning("Here should fetch data")
-        
-        
+//        add(childVC: GFUserInfoHeaderVC(user: ), to: headerView)
+//        add(childVC: GFRepoItemVC(user: <#T##User!#>), to: itemViewOne)
+//        add(childVC: GFItemInfoVC(user: <#T##User!#>), to: itemViewTwo)
     }
     
     private func configureViewController() {
@@ -53,10 +53,6 @@ class UserInfoVC: UIViewController {
             ])
         }
         
-        itemViewOne.backgroundColor = .systemPink
-        itemViewTwo.backgroundColor = .systemBlue
-        
-        
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 180),
@@ -74,7 +70,6 @@ class UserInfoVC: UIViewController {
         containerView.addSubview(childVC.view)
         childVC.view.frame = containerView.bounds
         childVC.didMove(toParent: self)
-        
     }
     
     @objc func dismissVC() {
