@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol UserInfoVCDelegate: AnyObject {
+    func didTapGithubProfile(for user: User)
+    func didTapGetFollowers(for user: User)
+}
+
 class UserInfoVC: UIViewController {
     
     let headerView = UIView()
@@ -19,6 +24,7 @@ class UserInfoVC: UIViewController {
     let itemHeight: CGFloat = 140
     
     var username : String!
+    weak var delegate : FollowerListVCDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +37,25 @@ class UserInfoVC: UIViewController {
     
     private func getUserInfo(){
 #warning("Here should fetch data")
-//        add(childVC: GFUserInfoHeaderVC(user: ), to: headerView)
+        
         var user: User!
-//        add(childVC: GFRepoItemVC(user: <#T##User!#>), to: itemViewOne)
-//        add(childVC: GFItemInfoVC(user: <#T##User!#>), to: itemViewTwo)
+
+        configureUIElements(with: user)
+    }
+    
+    func configureUIElements(with user: User){
+        
+        let repoItemVC = GFRepoItemVC(user: user)
+        repoItemVC.delegate = self
+        
+        let followerItemVC = GFFollowerItemVC(user: user)
+        followerItemVC.delegate = self
         
         dateLabel.text = "GitHub Since \(user.createdAt.convertToDisplayFormat())"
+        add(childVC: GFUserInfoHeaderVC(user: user), to: headerView)
+        add(childVC: repoItemVC, to: itemViewOne)
+        add(childVC: followerItemVC, to: itemViewTwo)
+        
     }
     
     private func configureViewController() {
@@ -84,4 +103,25 @@ class UserInfoVC: UIViewController {
     }
     
     
+}
+
+extension UserInfoVC: UserInfoVCDelegate {
+    func didTapGithubProfile(for user: User) {
+        guard let url = URL(string: user.htmlUrl) else {
+            presentGFAlertOnMainThread(title: "Invalid Url", message: "The url attached to this user is invalid", buttonTitle: "Ok")
+            return
+        }
+        presentSafariVC(with: url)
+    }
+    
+    func didTapGetFollowers(for user: User) {
+        //DismissVC
+        guard user.followers != 0 else {
+            presentGFAlertOnMainThread(title: "No followers", message: "User has no followers.", buttonTitle: "So sad")
+            return
+        }
+        delegate.didRequestFollowers(for: user.login)
+
+        dismissVC()
+    }
 }
