@@ -12,6 +12,8 @@
 		74E7D0DD2989815A002FAD12 /* GFItemInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7D0DC2989815A002FAD12 /* GFItemInfoVC.swift */; };
 		74E7D0DF298A92A7002FAD12 /* GFRepoItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7D0DE298A92A7002FAD12 /* GFRepoItemVC.swift */; };
 		74E7D0E1298A951B002FAD12 /* GFFollowerItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7D0E0298A951B002FAD12 /* GFFollowerItemVC.swift */; };
+		74E7D0E4298AA68F002FAD12 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7D0E3298AA68F002FAD12 /* Date+Ext.swift */; };
+		74E7D0E6298AA6CB002FAD12 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E7D0E5298AA6CB002FAD12 /* String+Ext.swift */; };
 		74FA15B52981B28300E17E17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA15B42981B28300E17E17 /* AppDelegate.swift */; };
 		74FA15B72981B28300E17E17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA15B62981B28300E17E17 /* SceneDelegate.swift */; };
 		74FA15BE2981B28400E17E17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74FA15BD2981B28400E17E17 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		74E7D0DC2989815A002FAD12 /* GFItemInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoVC.swift; sourceTree = "<group>"; };
 		74E7D0DE298A92A7002FAD12 /* GFRepoItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFRepoItemVC.swift; sourceTree = "<group>"; };
 		74E7D0E0298A951B002FAD12 /* GFFollowerItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemVC.swift; sourceTree = "<group>"; };
+		74E7D0E3298AA68F002FAD12 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		74E7D0E5298AA6CB002FAD12 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		74FA15B12981B28300E17E17 /* GitHubFollower_Programmatic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubFollower_Programmatic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FA15B42981B28300E17E17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74FA15B62981B28300E17E17 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				74FA15D92983E97D00E17E17 /* UIVİewController+Ext.swift */,
+				74E7D0E3298AA68F002FAD12 /* Date+Ext.swift */,
+				74E7D0E5298AA6CB002FAD12 /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 				74FA15E32984027500E17E17 /* User.swift in Sources */,
 				74FA15D02983218E00E17E17 /* GFTextField.swift in Sources */,
 				74FA15CB2982C03600E17E17 /* FavoriteListVC.swift in Sources */,
+				74E7D0E6298AA6CB002FAD12 /* String+Ext.swift in Sources */,
 				74FA15D22983D1C600E17E17 /* FollowersListVC.swift in Sources */,
 				74FA15DA2983E97D00E17E17 /* UIVİewController+Ext.swift in Sources */,
 				74FA15F02985498100E17E17 /* UIHelper.swift in Sources */,
@@ -347,6 +354,7 @@
 				74FA15D62983E27600E17E17 /* GFBodyLabel.swift in Sources */,
 				74FA15E1298401C300E17E17 /* Follower.swift in Sources */,
 				74FA15D42983D80000E17E17 /* GFTitleLabel.swift in Sources */,
+				74E7D0E4298AA68F002FAD12 /* Date+Ext.swift in Sources */,
 				74FA15FE298935CD00E17E17 /* GFSecondaryTitleLabel.swift in Sources */,
 				74FA15F82987FAD200E17E17 /* GFEmptyStateView.swift in Sources */,
 				74FA15E6298406EE00E17E17 /* NetworkManager.swift in Sources */,

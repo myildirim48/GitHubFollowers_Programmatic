@@ -12,6 +12,7 @@ class UserInfoVC: UIViewController {
     let headerView = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
+    let dateLabel = GFBodyLabel(textAligment: .center)
     var itemViews: [UIView] = []
     
     let padding: CGFloat = 20
@@ -31,8 +32,11 @@ class UserInfoVC: UIViewController {
     private func getUserInfo(){
 #warning("Here should fetch data")
 //        add(childVC: GFUserInfoHeaderVC(user: ), to: headerView)
+        var user: User!
 //        add(childVC: GFRepoItemVC(user: <#T##User!#>), to: itemViewOne)
 //        add(childVC: GFItemInfoVC(user: <#T##User!#>), to: itemViewTwo)
+        
+        dateLabel.text = "GitHub Since \(user.createdAt.convertToDisplayFormat())"
     }
     
     private func configureViewController() {
@@ -42,7 +46,7 @@ class UserInfoVC: UIViewController {
     
     
     private func layoutUI(){
-        itemViews = [headerView,itemViewOne,itemViewTwo]
+        itemViews = [headerView,itemViewOne,itemViewTwo,dateLabel]
         
         for itemView in itemViews {
             view.addSubview(itemView)
@@ -61,7 +65,10 @@ class UserInfoVC: UIViewController {
             itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
             
             itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor,constant: padding),
-            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight)
+            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
+            
+            dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor,constant: padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
     }
     
