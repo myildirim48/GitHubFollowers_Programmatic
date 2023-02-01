@@ -78,9 +78,9 @@ class FollowersListVC: UIViewController {
 
     private func getFollowers(username: String, page: Int){
         showLoadingView()
-        NetworkManager.shared.fetFollowers(for: username, page: page) { [weak self] result in
-            #warning("Call Dismiss")
+        NetworkManager.shared.GetFollowers(for: username, page: page) { [weak self] result in
             self?.dismissLoadingView()
+            
             guard let self = self else {return}
             
             switch result {
@@ -128,7 +128,7 @@ extension FollowersListVC : UICollectionViewDelegate {
         
         let destVC      = UserInfoVC()
         destVC.username = follower.login
-        destVC.delegate
+        destVC.delegate = self
         let navController = UINavigationController(rootViewController: destVC)
         present(navController, animated: true)
     }

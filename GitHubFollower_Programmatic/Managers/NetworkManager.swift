@@ -13,7 +13,7 @@ class NetworkManager {
     
     private init() { }
     
-    func fetFollowers(for username: String, page: Int,completion: @escaping(Result<[Follower],GFError>) -> Void) {
+    func GetFollowers(for username: String, page: Int,completion: @escaping(Result<[Follower],GFError>) -> Void) {
         let endPoint = baserUrl + "\(username)/followers?per_page=100&page=\(page)"
         
         guard let url = URL(string: endPoint) else {
@@ -50,8 +50,8 @@ class NetworkManager {
         task.resume()
     }
     
-    func getUser(for username: String, page: Int,completion: @escaping(Result<[Follower],GFError>) -> Void) {
-        let endPoint = baserUrl + "\(username)/followers?per_page=100&page=\(page)"
+    func getUser(for username: String, completion: @escaping(Result<User,GFError>) -> Void) {
+        let endPoint = baserUrl + "\(username)"
         
         guard let url = URL(string: endPoint) else {
             completion(.failure(.invalidUsername))
@@ -77,8 +77,9 @@ class NetworkManager {
             do{
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let followers = try decoder.decode([Follower].self, from: data)
+                let followers = try decoder.decode(User.self, from: data)
                 completion(.success(followers))
+                print("success at user")
             }catch {
                 completion(.failure(.invalidData))
             }

@@ -14,7 +14,7 @@ enum ItemInfoType{
 class GFItemInfoView: UIView {
     
     let symbolImageView = UIImageView()
-    let titlaLabel = GFTitleLabel(textAligment: .left, fontSize: 14)
+    let titleLabel = GFTitleLabel(textAligment: .left, fontSize: 14)
     let countLabel = GFTitleLabel(textAligment: .left, fontSize: 14)
     
     override init(frame: CGRect) {
@@ -28,15 +28,14 @@ class GFItemInfoView: UIView {
     
     private func configure(){
         addSubview(symbolImageView)
-        addSubview(titlaLabel)
+        addSubview(titleLabel)
         addSubview(countLabel)
-        
-        symbolImageView.contentMode = .scaleAspectFill
-        symbolImageView.tintColor = .label
+
         
         symbolImageView.translatesAutoresizingMaskIntoConstraints = false
-        titlaLabel.translatesAutoresizingMaskIntoConstraints = false
-        countLabel.translatesAutoresizingMaskIntoConstraints = false
+        symbolImageView.contentMode = .scaleAspectFill
+        symbolImageView.tintColor = .label
+    #warning("wd")
         
         NSLayoutConstraint.activate([
             symbolImageView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -44,12 +43,12 @@ class GFItemInfoView: UIView {
             symbolImageView.widthAnchor.constraint(equalToConstant: 20),
             symbolImageView.heightAnchor.constraint(equalToConstant: 20),
             
-            titlaLabel.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor),
-            titlaLabel.leadingAnchor.constraint(equalTo: symbolImageView.trailingAnchor,constant: 12),
-            titlaLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            titlaLabel.heightAnchor.constraint(equalToConstant: 18),
+            titleLabel.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: symbolImageView.trailingAnchor, constant: 12),
+            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 18),
             
-            countLabel.topAnchor.constraint(equalTo: symbolImageView.bottomAnchor,constant: 4),
+            countLabel.topAnchor.constraint(equalTo: symbolImageView.bottomAnchor, constant: 4),
             countLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             countLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             countLabel.heightAnchor.constraint(equalToConstant: 18)
@@ -57,23 +56,22 @@ class GFItemInfoView: UIView {
     }
     
     func set(itemInfoType: ItemInfoType,with count:Int){
-        
-        countLabel.text = String(count)
         switch itemInfoType {
         case .repos:
-            symbolImageView.image = UIImage(systemName: SFSymbols.repos)
-            titlaLabel.text = "Public Repos"
-            countLabel.text = String(count)
+            symbolImageView.image   = UIImage(systemName: SFSymbols.repos)
+            titleLabel.text         = "Public Repos"
         case .gists:
-            symbolImageView.image = UIImage(systemName: SFSymbols.gists)
-            titlaLabel.text = "Public Gists"
-        case .following:
-            symbolImageView.image = UIImage(systemName: SFSymbols.following)
-            titlaLabel.text = "Following"
+            symbolImageView.image   = UIImage(systemName: SFSymbols.gists)
+            titleLabel.text         = "Public Gists"
         case .followers:
-            symbolImageView.image = UIImage(systemName: SFSymbols.followers)
-            titlaLabel.text = "followers"
+            symbolImageView.image   = UIImage(systemName: SFSymbols.followers)
+            titleLabel.text         = "Followers"
+        case .following:
+            symbolImageView.image   = UIImage(systemName: SFSymbols.following)
+            titleLabel.text         = "Following"
         }
+        
+        countLabel.text             = String(count)
         
     }
     

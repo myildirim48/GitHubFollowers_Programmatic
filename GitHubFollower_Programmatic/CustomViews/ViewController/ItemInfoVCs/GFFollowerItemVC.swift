@@ -8,6 +8,7 @@
 import Foundation
 class GFFollowerItemVC: GFItemInfoVC {
     override func viewDidLoad() {
+        super.viewDidLoad()
         configureItems()
     }
     

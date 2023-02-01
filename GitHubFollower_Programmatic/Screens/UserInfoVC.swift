@@ -20,27 +20,33 @@ class UserInfoVC: UIViewController {
     let dateLabel = GFBodyLabel(textAligment: .center)
     var itemViews: [UIView] = []
     
-    let padding: CGFloat = 20
-    let itemHeight: CGFloat = 140
-    
     var username : String!
     weak var delegate : FollowerListVCDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         configureViewController()
         layoutUI()
-        
         getUserInfo()
     }
     
     private func getUserInfo(){
-#warning("Here should fetch data")
-        
-        var user: User!
+    #warning("Here should fetch data")
+        showLoadingView()
+        NetworkManager.shared.getUser(for: username) { [weak self] result in
+            self?.dismissLoadingView()
+    
+            guard let self = self else {return}
+            
+            switch result {
+            case .success(let user):
+                DispatchQueue.main.async { self.configureUIElements(with: user) }
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+                print("")
+            }
+        }
 
-        configureUIElements(with: user)
     }
     
     func configureUIElements(with user: User){
@@ -51,42 +57,48 @@ class UserInfoVC: UIViewController {
         let followerItemVC = GFFollowerItemVC(user: user)
         followerItemVC.delegate = self
         
-        dateLabel.text = "GitHub Since \(user.createdAt.convertToDisplayFormat())"
-        add(childVC: GFUserInfoHeaderVC(user: user), to: headerView)
-        add(childVC: repoItemVC, to: itemViewOne)
-        add(childVC: followerItemVC, to: itemViewTwo)
-        
+        self.add(childVC: repoItemVC, to: self.itemViewOne)
+        self.add(childVC: followerItemVC, to: self.itemViewTwo)
+        self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
+        self.dateLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
     }
     
     private func configureViewController() {
+        view.backgroundColor = .systemBackground
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem = doneButton
     }
     
     
     private func layoutUI(){
-        itemViews = [headerView,itemViewOne,itemViewTwo,dateLabel]
         
+        let padding: CGFloat = 20
+        let itemHeight: CGFloat = 140
+         
+        itemViews = [headerView,itemViewOne,itemViewTwo,dateLabel]
+
         for itemView in itemViews {
             view.addSubview(itemView)
             itemView.translatesAutoresizingMaskIntoConstraints = false
+            
             NSLayoutConstraint.activate([
                 itemView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: padding),
                 itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -padding)
             ])
         }
+
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 180),
             
-            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor,constant: padding),
+            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
             itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
             
-            itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor,constant: padding),
+            itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
             itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
             
-            dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor,constant: padding),
+            dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
             dateLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
     }
