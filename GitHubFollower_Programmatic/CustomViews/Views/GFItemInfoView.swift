@@ -35,7 +35,7 @@ class GFItemInfoView: UIView {
         symbolImageView.translatesAutoresizingMaskIntoConstraints = false
         symbolImageView.contentMode = .scaleAspectFill
         symbolImageView.tintColor = .label
-    #warning("wd")
+        #warning("wd")
         
         NSLayoutConstraint.activate([
             symbolImageView.topAnchor.constraint(equalTo: self.topAnchor),
