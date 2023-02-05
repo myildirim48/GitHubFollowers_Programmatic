@@ -19,6 +19,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        view.addSubviews(logoImageView,usernameTextField,callToActiobButton)
         configureLogoImageView()
         configureTextField()
         configureCallToActionButton()
@@ -49,7 +50,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
     }
     
     func configureLogoImageView() {
-        view.addSubview(logoImageView)
+//        view.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = Images.ghLogo
         
@@ -66,7 +67,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
     }
     
     func configureTextField() {
-        view.addSubview(usernameTextField)
+//        view.addSubview(usernameTextField)
         usernameTextField.delegate = self
         
         NSLayoutConstraint.activate([
@@ -78,7 +79,7 @@ class SearchVC: UIViewController, UITextFieldDelegate {
     }
     
     func configureCallToActionButton() {
-        view.addSubview(callToActiobButton)
+//        view.addSubview(callToActiobButton)
         callToActiobButton.addTarget(self, action: #selector(pushFollowerListVC), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
