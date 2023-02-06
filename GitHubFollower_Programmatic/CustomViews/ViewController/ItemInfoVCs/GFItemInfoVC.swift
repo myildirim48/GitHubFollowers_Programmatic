@@ -6,8 +6,9 @@
 //
 
 import UIKit
+
 protocol ItemInfoVCDelegate: AnyObject {
-    func didTapGithubProfile(for user: User)
+    func didTapGitHubProfile(for user: User)
     func didTapGetFollowers(for user: User)
 }
 
@@ -56,7 +57,6 @@ class GFItemInfoVC: UIViewController {
     }
     
     @objc func actionButtonTapped() {
-        
     }
     
     private func layoutUI(){

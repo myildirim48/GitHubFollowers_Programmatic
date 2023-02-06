@@ -46,8 +46,8 @@
             filePath = "GitHubFollower_Programmatic/Screens/UserInfoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "configureUIElements(with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "GitHubFollower_Programmatic/Screens/UserInfoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "configureUIElements(with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "GitHubFollower_Programmatic/CustomViews/ViewController/ItemInfoVCs/GFRepoItemVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "configureItems()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "GitHubFollower_Programmatic/CustomViews/ViewController/ItemInfoVCs/GFRepoItemVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "configureItems()"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "GitHubFollower_Programmatic/Screens/UserInfoVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "getUserInfo()"
             landmarkType = "7">
             <Locations>
@@ -146,6 +146,22 @@
                   offsetFromSymbolStart = "48">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D9BCB420-1AA9-481C-9639-778FB5866883"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubFollower_Programmatic/CustomViews/ViewController/ItemInfoVCs/GFItemInfoVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "actionButtonTapped()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

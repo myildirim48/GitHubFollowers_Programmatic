@@ -92,21 +92,26 @@ class FollowersListVC: GFDataLoadingVC {
             
             switch result {
             case .success(let followers):
-                if followers.count < 100 { self.hasMoreFollowers = false }  //For pagination
-                self.followers.append(contentsOf: followers) //For pagination
-                
-                if self.followers.isEmpty {
-                    let message = "This user doesn't have any followers. Go follow them. 😃"
-                    DispatchQueue.main.async { self.showEmptyStateview(with: message, in: self.view) }
-                    return
-                }
-                self.updateData(on:self.followers)
+                self.updateUI(with: followers)
             case .failure(let failure):
                 self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: failure.rawValue, buttonTitle: "Ok")
             }
             self.isLoadingMoreFollowers = false
         }
     }
+    
+    private func updateUI(with followers: [Follower]){
+        if followers.count < 100 { self.hasMoreFollowers = false }  //For pagination
+        self.followers.append(contentsOf: followers) //For pagination
+        
+        if self.followers.isEmpty {
+            let message = "This user doesn't have any followers. Go follow them. 😃"
+            DispatchQueue.main.async { self.showEmptyStateview(with: message, in: self.view) }
+            return
+        }
+        self.updateData(on:self.followers)
+    }
+    
     private func updateData(on followers: [Follower]){
         var snapShot = NSDiffableDataSourceSnapshot<Section,Follower>()
         snapShot.appendSections([.main])
@@ -126,22 +131,27 @@ class FollowersListVC: GFDataLoadingVC {
             
             switch result {
             case .success(let user):
-                let favorite =  Follower(login: user.login, avatarUrl: user.avatarUrl)
-                PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] err in
-                    guard let self = self else { return }
-                    
-                    guard let error = err else {
-                        self.presentGFAlertOnMainThread(title: "Success", message: "You have successfully favorited this user.🥳", buttonTitle: "Hooraayy!")
-                        return
-                    }
-                    
-                    self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
-                }
+                self.addUserToFavorites(with: user)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
+        
     }
+    private func addUserToFavorites(with user:User){
+        let favorite =  Follower(login: user.login, avatarUrl: user.avatarUrl)
+        PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] err in
+            guard let self = self else { return }
+            
+            guard let error = err else {
+                self.presentGFAlertOnMainThread(title: "Success", message: "You have successfully favorited this user.🥳", buttonTitle: "Hooraayy!")
+                return
+            }
+            
+            self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+        }
+    }
+    
 }
 
 extension FollowersListVC : UICollectionViewDelegate {
@@ -183,7 +193,7 @@ extension FollowersListVC : UISearchResultsUpdating {
     }
 }
 
-extension FollowersListVC: UserInfoVCDelegate{
+extension FollowersListVC: UserInfoVCDelegate {
     
     func didRequestFollowers(for username: String) {
         //Get followers for that user
