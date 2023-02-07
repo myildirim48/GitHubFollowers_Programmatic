@@ -100,6 +100,7 @@ class FollowersListVC: GFDataLoadingVC {
             }
 
 //            Diffrent way withot catching errors
+            
 //            guard let followers = try? await NetworkManager.shared.GetFollowers(for: username, page: page) else {
 //                presentDefaultError()
 //                dismissLoadingView()
@@ -149,17 +150,32 @@ class FollowersListVC: GFDataLoadingVC {
         #warning("AddButton Tapped")
         
         showLoadingView()
-        NetworkManager.shared.getUser(for: username) { [weak self] result in
-            guard let self = self else {return}
-        self.dismissLoadingView()
-            
-            switch result {
-            case .success(let user):
-                self.addUserToFavorites(with: user)
-            case .failure(let error):
-                self.presentGFAlert(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+        Task {
+            do {
+                let user = try await NetworkManager.shared.getUser(for: username)
+                addUserToFavorites(with: user)
+                dismissLoadingView()
+            }catch {
+                if let gfError = error as? GFError {
+                    presentGFAlert(title: "Bad stuff Happend", message: gfError.rawValue, buttonTitle: "Ok")
+                }else {
+                    presentDefaultError()
+                }
+                dismissLoadingView()
             }
         }
+        
+//        NetworkManager.shared.getUser(for: username) { [weak self] result in
+//            guard let self = self else {return}
+//        self.dismissLoadingView()
+//
+//            switch result {
+//            case .success(let user):
+//                self.addUserToFavorites(with: user)
+//            case .failure(let error):
+//                self.presentGFAlert(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+//            }
+//        }
         
     }
     private func addUserToFavorites(with user:User){

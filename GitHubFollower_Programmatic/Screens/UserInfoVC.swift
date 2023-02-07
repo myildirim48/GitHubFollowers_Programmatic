@@ -36,19 +36,37 @@ class UserInfoVC: GFDataLoadingVC {
     private func getUserInfo(){
     #warning("Here should fetch data")
         showLoadingView()
-        NetworkManager.shared.getUser(for: username) { [weak self] result in
-            self?.dismissLoadingView()
-    
-            guard let self = self else {return}
-            
-            switch result {
-            case .success(let user):
-                DispatchQueue.main.async { self.configureUIElements(with: user) }
-            case .failure(let error):
-                self.presentGFAlert(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
-                print("")
+        
+        Task {
+            do {
+                let user = try await NetworkManager.shared.getUser(for: username)
+                configureUIElements(with: user)
+                dismissLoadingView()
+            }catch {
+                if let gfError = error as? GFError {
+                    presentGFAlert(title: "Bad stuff Happend", message: gfError.rawValue, buttonTitle: "Ok")
+                }else {
+                    presentDefaultError()
+                }
+                dismissLoadingView()
             }
+            
         }
+        
+        
+//        NetworkManager.shared.getUser(for: username) { [weak self] result in
+//            self?.dismissLoadingView()
+//
+//            guard let self = self else {return}
+//
+//            switch result {
+//            case .success(let user):
+//                DispatchQueue.main.async { self.configureUIElements(with: user) }
+//            case .failure(let error):
+//                self.presentGFAlert(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+//                print("")
+//            }
+//        }
 
     }
     

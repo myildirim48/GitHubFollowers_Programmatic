@@ -7,10 +7,13 @@
 
 import Foundation
 extension Date {
+//    func convertDateToMonthDayYear() -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "MMM d, yyyy"
+//        return dateFormatter.string(from: self)
+//    }
+//
     func convertDateToMonthDayYear() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, yyyy"
-        return dateFormatter.string(from: self)
+        return formatted(.dateTime.month(.twoDigits).year(.defaultDigits))
     }
-
 }
