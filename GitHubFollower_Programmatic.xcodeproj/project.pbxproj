@@ -138,6 +138,7 @@
 		74FA15B32981B28300E17E17 /* GitHubFollower_Programmatic */ = {
 			isa = PBXGroup;
 			children = (
+				74FA15C22981B28400E17E17 /* Info.plist */,
 				74FA15E72984195F00E17E17 /* Utilities */,
 				74FA15E4298406DE00E17E17 /* Managers */,
 				74FA15DF298401BD00E17E17 /* Model */,
@@ -189,7 +190,6 @@
 		74FA15DE2983FCF200E17E17 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				74FA15C22981B28400E17E17 /* Info.plist */,
 				74FA15BD2981B28400E17E17 /* Assets.xcassets */,
 				74FA15BF2981B28400E17E17 /* LaunchScreen.storyboard */,
 				74FA15B42981B28300E17E17 /* AppDelegate.swift */,
@@ -535,7 +535,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3JFC7AD7WA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = /Users/yildirim/Desktop/GitHubFollower_Programmatic/GitHubFollower_Programmatic/Support/Info.plist;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -565,7 +565,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3JFC7AD7WA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = /Users/yildirim/Desktop/GitHubFollower_Programmatic/GitHubFollower_Programmatic/Support/Info.plist;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
