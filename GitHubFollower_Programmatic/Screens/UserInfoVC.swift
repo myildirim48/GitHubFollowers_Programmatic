@@ -150,7 +150,6 @@ class UserInfoVC: GFDataLoadingVC {
 extension UserInfoVC: GFRepoItemVCDelegate, GFFollowerItemVCDelegate {
     
     func didTapGitHubProfile(for user: User) {
-        print("hello")
         guard let url = URL(string: user.htmlUrl) else {
             presentGFAlert(title: "Invalid Url", message: "The url attached to this user is invalid", buttonTitle: "Ok")
             return

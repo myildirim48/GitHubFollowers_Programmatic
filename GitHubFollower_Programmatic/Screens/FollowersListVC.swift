@@ -79,9 +79,6 @@ class FollowersListVC: GFDataLoadingVC {
             return cell
         })
     }
-    
-    
-
     private func getFollowers(username: String, page: Int){
         showLoadingView()
         isLoadingMoreFollowers = true
@@ -99,30 +96,7 @@ class FollowersListVC: GFDataLoadingVC {
                 dismissLoadingView()
             }
 
-//            Diffrent way withot catching errors
-            
-//            guard let followers = try? await NetworkManager.shared.GetFollowers(for: username, page: page) else {
-//                presentDefaultError()
-//                dismissLoadingView()
-//                return
-//            }
-//            updateUI(with: followers)
-//            dismissLoadingView()
         }
-        
-//        NetworkManager.shared.GetFollowers(for: username, page: page) { [weak self] result in
-//            self?.dismissLoadingView()
-//
-//            guard let self = self else {return}
-//
-//            switch result {
-//            case .success(let followers):
-//                self.updateUI(with: followers)
-//            case .failure(let failure):
-//                self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: failure.rawValue, buttonTitle: "Ok")
-//            }
-//            self.isLoadingMoreFollowers = false
-//        }
     }
     
     private func updateUI(with followers: [Follower]){
@@ -164,19 +138,6 @@ class FollowersListVC: GFDataLoadingVC {
                 dismissLoadingView()
             }
         }
-        
-//        NetworkManager.shared.getUser(for: username) { [weak self] result in
-//            guard let self = self else {return}
-//        self.dismissLoadingView()
-//
-//            switch result {
-//            case .success(let user):
-//                self.addUserToFavorites(with: user)
-//            case .failure(let error):
-//                self.presentGFAlert(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
-//            }
-//        }
-        
     }
     private func addUserToFavorites(with user:User){
         let favorite =  Follower(login: user.login, avatarUrl: user.avatarUrl)
@@ -243,7 +204,6 @@ extension FollowersListVC: UserInfoVCDelegate {
         
         followers.removeAll()
         filtiredFollowers.removeAll()
-//        collectionView.setContentOffset(.zero, animated: true)
         collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         getFollowers(username: username, page: page)
     }
